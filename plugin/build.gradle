@@ -1,0 +1,98 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1'
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+apply plugin: 'com.jfrog.bintray'
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+}
+
+group = 'com.ticwear.tools.build'
+version = '1.0.0'
+
+def siteUrl = 'https://github.com/Tinker-S/TicwearBuildPlugin'
+def gitUrl = 'https://github.com/Tinker-S/TicwearBuildPlugin'
+
+install {
+    repositories.mavenInstaller {
+       pom {
+           project {
+               packaging 'jar'
+               name 'TicwearBuildPlugin'
+               url siteUrl
+               licenses {
+                   license {
+                       name 'The Apache Software License, Version 2.0'
+                       url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                   }
+               }
+               developers {
+                   developer {
+                       id 'tinker'
+                       name 'Tinker Sun'
+                       email 'sunting.bcwl@gmail.com'
+                   }
+               }
+               scm {
+                   connection gitUrl
+                   developerConnection gitUrl
+                   url siteUrl
+               }
+           }
+       }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.groovy.srcDirs
+    classifier = 'sources'
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+
+    configurations = ['archives']
+        pkg {
+            repo = 'maven'
+            name = 'TicwearBuildPlugin'
+            desc = 'Package app for Ticwear platform.'
+            websiteUrl = siteUrl
+            issueTrackerUrl = siteUrl + '/issues'
+            vcsUrl = gitUrl
+            licenses = ['Apache-2.0']
+            publish = true
+        }
+}
+
+// Used for local test.
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri('../repo'))
+        }
+    }
+}
