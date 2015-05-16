@@ -19,7 +19,15 @@ This plugin has already published to **jCenter**, but not on Maven Central yet.
 
 This is a plugin for gradle, so I recommend you using Android Studio instead of eclipse as development tool.  
 
-To use this plugin, you need add some code in your **build.gradle**:  
+To use this plugin, you need add some code in your **build.gradle**:
+
+* Ensure you have included jcenter repository
+
+```
+repositories {
+    jcenter()
+}
+```
 
 * Add dependencies
 

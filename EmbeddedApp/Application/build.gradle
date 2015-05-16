@@ -1,9 +1,6 @@
 buildscript {
     repositories {
-        mavenCentral()
-        maven {
-            url uri('../../repo')
-        }
+        jcenter()
     }
 
     dependencies {
@@ -13,7 +10,7 @@ buildscript {
 }
 
 apply plugin: 'com.android.application'
-apply plugin: 'com.ticwear.application'
+apply plugin: 'ticwear'
 
 dependencies {
     compile 'com.google.android.gms:play-services-wearable:6.5.+'
@@ -53,19 +50,18 @@ android {
 
     }
 
+    signingConfigs {
+        release {
+            storeFile file("../release.jks")
+            storePassword "123456"
+            keyAlias "release"
+            keyPassword "123456"
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
