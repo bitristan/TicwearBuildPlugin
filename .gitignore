@@ -6,7 +6,8 @@ gradle-app.setting
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
 /repo/
-/EmbeddedApp/build/
 /plugin/build/
-/EmbeddedApp/Application/build/
-/EmbeddedApp/Wearable/build/
+/FirstTicwearApp/build/
+/FirstTicwearApp/mobile/build/
+/FirstTicwearApp/wear/build/
+/FirstTicwearApp/wear/wear.iml
