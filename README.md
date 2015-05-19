@@ -43,7 +43,7 @@ apply plugin 'com.ticwear.application'
 apply plugin 'ticwear'
 ```
 
-Please see the [example](https://github.com/Tinker-S/TicwearBuildPlugin/blob/master/EmbeddedApp/Application/build.gradle).
+Please see the [example](https://github.com/Tinker-S/TicwearBuildPlugin/blob/master/FirstTicwearApp/mobile/build.gradle).
 
 ## Attention
 
