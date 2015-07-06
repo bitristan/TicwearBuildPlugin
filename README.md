@@ -21,7 +21,7 @@ This is a plugin for gradle, so I recommend you using Android Studio instead of 
 
 To use this plugin, you need add some code in your **build.gradle**:
 
-* Ensure you have included jcenter repository
+* Ensure you have included jcenter repository in project build.gradle
 
 ```
 repositories {
@@ -29,18 +29,20 @@ repositories {
 }
 ```
 
-* Add dependencies
+* Add dependencies in project build.gradle
 
 ```
-compile 'com.ticwear.tools.build:gradle:1.0.0'
+dependencies {
+    classpath 'com.ticwear.tools.build:gradle:1.0.0'
+}
 ```
 
-* Apply plugin
+* Apply plugin in module build.gradle
 
 ```
-apply plugin 'com.ticwear.application'
+apply plugin: 'com.ticwear.application'
 // or
-apply plugin 'ticwear'
+apply plugin: 'ticwear'
 ```
 
 Please see the [example](https://github.com/Tinker-S/TicwearBuildPlugin/blob/master/FirstTicwearApp/mobile/build.gradle).
