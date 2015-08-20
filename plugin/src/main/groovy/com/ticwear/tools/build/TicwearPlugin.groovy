@@ -24,7 +24,12 @@ class TicwearPlugin implements Plugin<Project> {
 
     String getManifestByFlavor(Project project, String flavor) {
         flavor = flavor?.trim() ? '/' + flavor.toLowerCase() : ''
-        return project.buildDir.absolutePath + '/intermediates/generated/manifests/microapk' + flavor + '/release/AndroidManifest.xml'
+        def path = project.buildDir.absolutePath + '/intermediates/generated/manifests/microapk' + flavor + '/release/AndroidManifest.xml'
+        println "getManifestByFlavor: " + new File(path).exists()
+        if (!new File(path).exists()) {
+            path = project.buildDir.absolutePath + '/generated/manifests/microapk' + flavor + '/release/AndroidManifest.xml'
+        }
+        return path;
     }
 
     String getFlavorByTask(String name) {
