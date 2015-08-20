@@ -33,7 +33,7 @@ repositories {
 
 ```
 dependencies {
-    classpath 'com.ticwear.tools.build:gradle:1.0.0'
+    classpath 'com.ticwear.tools.build:gradle:1.1.0'
 }
 ```
 
